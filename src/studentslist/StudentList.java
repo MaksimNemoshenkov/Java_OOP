@@ -1,57 +1,54 @@
 package studentslist;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 public class StudentList {
+	private Student[] list = new Student[100];
+	private int p = 0;
 
-	private ArrayList<Student> listStudents = new ArrayList<>();
-	
-	
-	StudentList (){	
+	public void add(Student s) {
+		if (p == list.length - 1) 
+			list = Arrays.copyOf(list, list.length + 100);
+			list[p++] = s;
 	}
-	
-	
-	public void addStudent(Student student) {
-	listStudents.add(student);
+
+	public Student get(int n) {
+		return list[n];
 	}
-	public Student getStudent(int numberStudent) {
-		return listStudents.get(numberStudent);
+
+	public int[] find(String name) {
+		int[] position = new int[p];
+		int masivPosition = -1;
+
+		for (int i = 0; i < p; i++)
+			if (list[i].getName().equalsIgnoreCase(name))
+				position[++masivPosition] = i;
+		if (masivPosition >= 0)
+			return Arrays.copyOf(position, ++masivPosition);
+		return null;
 	}
-	public ArrayList<Integer> getPisitionStudentName(String name) {
-		String studentName;
-		
-		ArrayList<Integer> masivNumberStudent = new ArrayList<>();
-		
-	for (int numberStudent = 0; numberStudent < listStudents.size(); numberStudent++) {
-		studentName = listStudents.get(numberStudent).getName();
-	if (studentName.equalsIgnoreCase(name)) {
-		masivNumberStudent.add(numberStudent);
+
+	public int[] findSurname(String surename) {
+		int[] position = new int[p];
+		int masivPosition = -1;
+		for (int i = 0; i < p; i++)
+			if (list[i].getSurname().equalsIgnoreCase(surename))
+				position[++masivPosition] = i;
+		if (masivPosition >= 0)
+			return Arrays.copyOf(position, ++masivPosition);
+		return null;
 	}
-}
-return masivNumberStudent;
-}		
-	public ArrayList<Integer> getPisitionStudentSurename(String surename) {
-		String studentSurename;
-		ArrayList<Integer> masivNumberStudent = new ArrayList<>();
-		for (int numberStudent = 0; numberStudent < listStudents.size(); numberStudent++) {
-			studentSurename = listStudents.get(numberStudent).getSurname();
-		if (studentSurename.equalsIgnoreCase(surename)) {
-			masivNumberStudent.add(numberStudent);
-			}
-		}
-		return masivNumberStudent;
-		}
-	public ArrayList<Integer>  getPisitionStudentBirth(Date birth) {
-		Date birtStudent;
-		ArrayList<Integer> masivNumberStudent = new ArrayList<>();		
-		for(int numberStudent = 0; numberStudent < listStudents.size(); numberStudent++) {
-			birtStudent = listStudents.get(numberStudent).getBirth();
-			if(birth.getDay()==birtStudent.getDay()&&birth.getMonth()==birtStudent.getMonth()
-					&&birth.getYear()==birtStudent.getYear()) {
-				masivNumberStudent.add(numberStudent);
-			}
-		}
-		return masivNumberStudent;
-		}
+
+	public int[] findDateBirth(Date birth) {
+		int[] position = new int[p];
+		int masivPosition = -1;
+		for (int i = 0; i < p; i++)
+			if (list[i].getBirth().getDate() == birth.getDate())
+				position[++masivPosition] = i;
+		if (masivPosition >= 0)
+			return Arrays.copyOf(position, ++masivPosition);
+		return null;
+	}
+
 }

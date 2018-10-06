@@ -1,65 +1,57 @@
 package studentslist;
 
-
-import java.util.ArrayList;
 import java.util.Date;
-
-import javax.swing.SingleSelectionModel;
 
 public class Main {
 
-	private static ArrayList<Integer> listPocitionStudents;
 	private static StudentList studentList;
+
 	public static void main(String[] args) {
 		studentList = new StudentList();
-		
-		studentList.addStudent(new Student("Vasya", "Pupkin", new Date(1970, 3, 28)));
-		studentList.addStudent(new Student("Vova","Ivanov",new Date(1970, 3, 28)));
-		studentList.addStudent(new Student("Ira","Ivanova",new Date(1970, 3, 28)));
-		studentList.addStudent(new Student("Sveta","Paraskovna",new Date(1970, 3, 28)));
-		studentList.addStudent(new Student("Vika","Ivanov",new Date(1970, 3, 28)));
-		studentList.addStudent(new Student("Sasha","Grey",new Date(1988, 3, 14)));
-		studentList.addStudent(new Student("Vova","Ivanov2",new Date(1970, 3, 28)));
-		studentList.addStudent(new Student("Vova","Ivanov",new Date(1970, 3, 28)));
-		
-		System.out.println("Find by date");
-		findStudentDate();
+
+		studentList.add(new Student("Vasya", "Pupkin", new Date(1970, 3, 28)));
+		studentList.add(new Student("Vova", "Ivanov", new Date(1970, 3, 28)));
+		studentList.add(new Student("Ira", "Ivanova", new Date(1970, 3, 28)));
+		studentList.add(new Student("Sveta", "Paraskovna", new Date(1970, 3, 28)));
+		studentList.add(new Student("Vika", "Ivanov", new Date(1970, 3, 28)));
+		studentList.add(new Student("Sasha", "Grey", new Date(1988, 3, 14)));
+		studentList.add(new Student("Vova", "Ivanov2", new Date(1970, 3, 28)));
+		studentList.add(new Student("Vova", "Ivanov", new Date(1970, 3, 28)));
+
+		Student student;
+
 		System.out.println("Find by name");
-		findStudentName();
+		int[] findName = studentList.find("Vova");
+		if (findName != null) {
+			for (int position : findName) {
+				student = studentList.get(position);
+				System.out.println("Name: " + student.getName() + "; Surename: " + student.getSurname()
+						+ "; Birth date: " + student.getBirth());
+			}
+		} else
+			System.out.println("search by name without results");
+
 		System.out.println("Find by surename");
-		findStudentsSureame();
-		
-		
-	}
-	
-	private static void findStudentName (){
-		listPocitionStudents = studentList.getPisitionStudentName("Vova");	
-		if(listPocitionStudents.size()>0) {
-			Student student;
-	for(Integer pocition: listPocitionStudents) {
-		student = studentList.getStudent(pocition);
-		System.out.println("Name: "+student.getName() +"; Surename: "+ student.getSurname() +"; Birth date: "+ student.getBirth());
+		int[] findSurename = studentList.findSurname("Grey");
+		if (findSurename != null) {
+			for (int position : findSurename) {
+				student = studentList.get(position);
+				System.out.println("Name: " + student.getName() + "; Surename: " + student.getSurname()
+						+ "; Birth date: " + student.getBirth());
 			}
-		}
-	}
-	private static void findStudentsSureame (){	
-		listPocitionStudents = studentList.getPisitionStudentSurename("Ivanov");	
-		if(listPocitionStudents.size()>0) {
-			Student student;
-	for(Integer pocition: listPocitionStudents) {
-		student = studentList.getStudent(pocition);
-		System.out.println("Name: "+student.getName() +"; Surename: "+ student.getSurname() +"; Birth date: "+ student.getBirth());
+		} else
+			System.out.println("search by surename without results");
+
+		System.out.println("Find by date");
+		int[] findDate = studentList.findDateBirth(new Date(1970, 3, 28));
+		if (findDate != null) {
+			for (int position : findDate) {
+				student = studentList.get(position);
+				System.out.println("Name: " + student.getName() + "; Surename: " + student.getSurname()
+						+ "; Birth date: " + student.getBirth());
 			}
-		}
+		} else
+			System.out.println("search by date without results");
 	}
-	private static void findStudentDate (){	
-		listPocitionStudents = studentList.getPisitionStudentBirth(new Date(1988, 3, 14));	
-		if(listPocitionStudents.size()>0) {
-			Student student;
-	for(Integer pocition: listPocitionStudents) {
-		student = studentList.getStudent(pocition);
-		System.out.println("Name: "+student.getName() +"; Surename: "+ student.getSurname() +"; Birth date: "+ student.getBirth());
-			}
-		}
-	}
+
 }
