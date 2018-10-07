@@ -1,9 +1,8 @@
 package figure;
 
-public class Rectangle extends Figure{
+public class Rectangle extends Figure implements Area{
 
-
-	private double height, width;
+	private double height, width, area;
 	
 	public Rectangle(int height, int width) {
 	this.height = height;
@@ -12,8 +11,16 @@ public class Rectangle extends Figure{
 	
 	@Override
 	public double getArea() {
-		return height*width;
+		setArea();
+		return area;
 	}
+
+	@Override
+	public void setArea() {
+		area = height*width;
+	}
+	
+	
 
 	
 }
