@@ -14,4 +14,12 @@ public class IPhone5 extends IPhone {
 		super.sendSMS(number, message);
 		System.out.println("IPhone5 class is sending sms " + message + " to " + number);
 	}
+	
+	public int getNumberCall() {
+		return numberCall;
+	}
+	
+	public int getNumberSMS() {
+		return numberSMS;
+	}
 }

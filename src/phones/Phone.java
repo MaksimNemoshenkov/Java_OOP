@@ -1,10 +1,13 @@
 package phones;
 
+
 public abstract class Phone {
 
 	protected boolean touch;
 	protected boolean hasWifi;
 	protected int screenSize;
+	protected int numberSMS;
+	protected int numberCall;
 
 	public Phone() {
 		System.out.println("Phone constructor");
