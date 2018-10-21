@@ -19,10 +19,9 @@ public class HumanDAO {
 			validateString(human.getPosition(), 100, "Должность");
 	}
 
-	//записує поверх файлу замість того, щоб записувати в кінець..
 	public void write(Human human) throws IOException {
 		validate(human);
-		try (FileOutputStream out = new FileOutputStream(file)) {
+		try (FileOutputStream out = new FileOutputStream(file, true)) {
 			writeFixedString(human.getName(),25,out);
 			writeFixedString(human.getSurName(),25,out);
 			out.write((int)human.getDate().getYear());
@@ -59,6 +58,7 @@ public class HumanDAO {
 		}
 	}
 	//чомусь повертає китайські букви
+	// читає в UTF-16 замість UTF-8
 	//читання фіксованої довжини
 	public static String readFixedString(int size, DataInput in) throws IOException {
 		StringBuilder b = new StringBuilder(size);
@@ -73,7 +73,6 @@ public class HumanDAO {
 				b.append(ch);
 		}
 		in.skipBytes(2 * (size - i));
-		System.out.println(b.toString());
 		return b.toString();
 	}
 
