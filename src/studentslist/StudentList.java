@@ -44,7 +44,7 @@ public class StudentList {
 		int[] position = new int[p];
 		int masivPosition = -1;
 		for (int i = 0; i < p; i++)
-			if (list[i].getBirth().getDate() == birth.getDate())
+			if (list[i].getBirth().equals(birth))
 				position[++masivPosition] = i;
 		if (masivPosition >= 0)
 			return Arrays.copyOf(position, ++masivPosition);
