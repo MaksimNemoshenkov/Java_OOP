@@ -1,14 +1,14 @@
 package human;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Human {
 	private String name;
 	private String surName;
-	private LocalDate date;
+	private Date date;
 	private String position;
 	private double salary;
-	public Human(String name, String surName, LocalDate date, String position, double salary) {
+	public Human(String name, String surName, Date date, String position, double salary) {
 		super();
 		this.name = name;
 		this.surName = surName;
@@ -28,10 +28,10 @@ public class Human {
 	public void setSurName(String surName) {
 		this.surName = surName;
 	}
-	public LocalDate getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(LocalDate date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	public String getPosition() {

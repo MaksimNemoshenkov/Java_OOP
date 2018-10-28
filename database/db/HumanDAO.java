@@ -1,7 +1,9 @@
 package db;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 
 import human.Human;
 
@@ -25,10 +27,8 @@ public class HumanDAO {
 				DataOutputStream writer = new DataOutputStream(out)) {
 			writeFixedString(human.getName(),50,out);
 			writeFixedString(human.getSurName(),50,out);
-			String date =""+human.getDate();
-			date = date.substring(0,4)+
-					date.substring(5, 7)+
-					date.substring(8);
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+            String date = formatter.format(human.getDate());
 			out.write(date.getBytes());
 			writeFixedString(human.getPosition(),100,out);
 			writer.writeDouble(human.getSalary());// записуємо Double 
@@ -36,7 +36,7 @@ public class HumanDAO {
 		}
 	}
 	
-	//неправильно працює, 
+	//
 	public Human read(int numberHuman) throws FileNotFoundException, IOException {
 		int seekPosition = numberHuman*217;
 		try(RandomAccessFile in = new RandomAccessFile(file, "r")){
@@ -49,7 +49,7 @@ public class HumanDAO {
 		String position = readFixedString(100, in,108+seekPosition);
 		in.seek(208+seekPosition);
 		Double Salary = in.readDouble();
-		return new Human(name,sureName,LocalDate.of(Year, Mont, Day), position,Salary);
+		return new Human(name,sureName,new Date(Year, Mont, Day), position,Salary);
 		}
 	}
 
