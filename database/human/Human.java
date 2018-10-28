@@ -46,4 +46,16 @@ public class Human {
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}	
+	
+	@Override
+	public String toString() {
+		return "name: "+getName()
+		+ "\nSurename: " + getSurName()
+		+ "\nData: "+ getDate().getYear() + "."
+					+ getDate().getMonth() + "."
+					+ getDate().getDay()
+		+ "\nSalary: " + getSalary()
+		+ "\nPosition: " + getPosition()
+		+ "\n";
+	}
 }
