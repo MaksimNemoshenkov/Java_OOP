@@ -4,11 +4,11 @@ package task_3_8;
 public class Main {
 
 	public static void main(String[] args) {
-		
-		String string  = "а";
+		System.out.println("Start");
+		String string  = "11213";
 		int num = 0;
 		try {
-			 num = gerParseInt(string);
+		num = gerParseInt(string);
 		} catch (IntegerException e) {
 			e.printStackTrace();
 		}
@@ -20,8 +20,8 @@ public class Main {
 		int number = 0;
 		for (int i=0; i<str.length(); i++) {
 			ch = str.charAt(i);
-			if (47>(int)ch&&(int)ch>58) 
-				throw new IntegerException("Its not number");	
+			if (47>(int)ch||(int)ch>58) 
+				throw new IntegerException("it's not number");	
 			number += (int)ch-48;
 			if (i!=str.length()-1) 
 				number *= 10;
