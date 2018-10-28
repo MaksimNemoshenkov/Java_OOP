@@ -1,11 +1,11 @@
-
+package task_3_8;
 
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		String string  = "1234567890";
+		String string  = "а";
 		int num = 0;
 		try {
 			 num = gerParseInt(string);

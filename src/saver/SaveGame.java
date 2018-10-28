@@ -44,7 +44,6 @@ public class SaveGame {
 	}
 
 	
-	
 	boolean userSaveGame(ArrayList<String> list, String SaveName) {
 		try {
 			PrintWriter out = new PrintWriter(address+SaveName+".txt", "UTF-8");

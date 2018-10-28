@@ -38,6 +38,7 @@ public class Task_2_5_1 {
 						destOut.write(
 								new String(buffer, "UTF-8").
 								replaceAll("Hello", "1234").
+							//	replaceAll("1234","Hello").
 								toString().
 								getBytes());
 					}

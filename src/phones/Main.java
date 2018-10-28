@@ -25,5 +25,4 @@ public class Main {
 		System.out.println("number call: " + samsung.getNumberCall());
 		System.out.println("number SMS: " + samsung.getNumberSMS());
 	}
-
 }
